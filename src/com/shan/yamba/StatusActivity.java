@@ -3,12 +3,16 @@ package com.shan.yamba;
 import winterwell.jtwitter.Twitter;
 import winterwell.jtwitter.TwitterException;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -16,12 +20,30 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class StatusActivity extends Activity implements OnClickListener, TextWatcher { //
+public class StatusActivity extends Activity implements OnClickListener,
+		TextWatcher { //
 	private static final String TAG = "StatusActivity";
 	EditText editText;
 	Button updateButton;
 	Twitter twitter;
 	TextView textCount; //
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater(); //
+		inflater.inflate(R.menu.menu, menu); //
+		return true; //
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) { //
+		case R.id.itemPrefs:
+			startActivity(new Intent(this, PrefsActivity.class)); // 
+			break;
+		}
+		return true; //
+	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -92,7 +114,7 @@ public class StatusActivity extends Activity implements OnClickListener, TextWat
 	public void beforeTextChanged(CharSequence s, int start, int count,
 			int after) {
 	}
-	public void onTextChanged(CharSequence s, int start, int before, int count) { // 
-		}
-	}
 
+	public void onTextChanged(CharSequence s, int start, int before, int count) { //
+	}
+}
