@@ -45,7 +45,16 @@ public class StatusActivity extends Activity implements OnClickListener,
 		case R.id.itemPrefs:
 			startActivity(new Intent(this, PrefsActivity.class)); //
 			break;
+
+		case R.id.itemServiceStart:
+			startService(new Intent(this, UpdaterService.class));
+			break;
+
+		case R.id.itemServiceStop:
+			stopService(new Intent(this, UpdaterService.class));
+			break;
 		}
+
 		return true; //
 	}
 
@@ -88,10 +97,11 @@ public class StatusActivity extends Activity implements OnClickListener,
 		protected String doInBackground(String... statuses) {
 			// TODO Auto-generated method stub
 			try {
-				YambaApplication yamba = ((YambaApplication) getApplication()); // 
-				winterwell.jtwitter.Status status = yamba.getTwitter().updateStatus(statuses[0]); //
+				YambaApplication yamba = ((YambaApplication) getApplication()); //
+				winterwell.jtwitter.Status status = yamba.getTwitter()
+						.updateStatus(statuses[0]); //
 				return status.text;
-				
+
 			} catch (TwitterException e) {
 				Log.e(TAG, e.toString());
 				e.printStackTrace();
@@ -139,7 +149,7 @@ public class StatusActivity extends Activity implements OnClickListener,
 	public void onTextChanged(CharSequence s, int start, int before, int count) { //
 	}
 
-	public void onSharedPreferenceChanged(SharedPreferences prefs, String key) { 
+	public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
 		twitter = null;
 	}
 }
