@@ -49,7 +49,7 @@ public class UpdaterService extends Service {
 	}
 
 	private class Updater extends Thread {
-		// Have To Replaye Twitter.Status to winterwell.jtwitter.Status
+		// Have To Replace Twitter.Status to winterwell.jtwitter.Status
 		List<winterwell.jtwitter.Status> timeline;
 
 		public Updater() {
@@ -64,7 +64,7 @@ public class UpdaterService extends Service {
 				try {
 					// Some work goes here...
 					try {
-						timeline = yamba.getTwitter().getFriendsTimeline(); //
+						timeline = yamba.getTwitter().getFriendsTimeline(); 
 					} catch (TwitterException e) {
 						Log.e(TAG, "Failed to connect to twitter service", e);
 					}
