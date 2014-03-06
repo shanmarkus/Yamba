@@ -11,6 +11,7 @@ import android.util.*;
 public class YambaApplication extends Application implements
 		OnSharedPreferenceChangeListener {
 
+	private boolean serviceRunning;
 	private static final String TAG = YambaApplication.class.getSimpleName();
 	public Twitter twitter;
 	private SharedPreferences prefs;
@@ -49,6 +50,14 @@ public class YambaApplication extends Application implements
 			String key) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public boolean isServiceRunning() {
+		return serviceRunning;
+	}
+
+	public void setServiceRunning(boolean serviceRunning) {
+		this.serviceRunning = serviceRunning;
 	}
 
 }
